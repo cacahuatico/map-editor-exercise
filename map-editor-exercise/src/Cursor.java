@@ -11,21 +11,25 @@ public class Cursor extends Cell implements KeyboardHandler {
     private Cell[] markedArr;
     private int indexMarkedArr;
     private int cells = Grid.COLS*Grid.ROWS;
-    private Cell position;
+    private Cell currentPos;
     private int moveTo = Grid.CELLSIZE;
-    private int initialPosX = 5/moveTo;
-    private int initialPosY = 5/moveTo;
+    private Grid grid;
+    //private int initialPosX = 5/moveTo;
+    //private int initialPosY = 5/moveTo;
 
     public Cursor(int col, int row){
         super(col,  row);
         this.keyboard = new Keyboard(this);
         this.markedArr = new Cell[cells];
+        //this.grid = grid;
         setColor(Color.BLUE);
         draw();
         fill();
 
+        //this.currentPos = grid.getRectangle(col, row);
 
-        //adds all events up, down, left and right to move, space to paint, L to load (info about cuadritos), C to clear, S to save
+        //adds all events up, down, left and right to move, space to paint, L to load (gets info about rectangles to an
+        // array), C to "unpaint" but does not , S to save the info to the array
         keyboard.addEventListener(KeyboardEvent.KEY_UP, KeyboardEventType.KEY_PRESSED);
         keyboard.addEventListener(KeyboardEvent.KEY_DOWN, KeyboardEventType.KEY_PRESSED);
         keyboard.addEventListener(KeyboardEvent.KEY_LEFT, KeyboardEventType.KEY_PRESSED);
@@ -42,21 +46,23 @@ public class Cursor extends Cell implements KeyboardHandler {
         switch (keyboardEvent.getKey()){
 
             case KeyboardEvent.KEY_UP:
-                move(0, 1);
+                moveUp();
                 break;
             case KeyboardEvent.KEY_DOWN:
-                move(0,+1);
+                moveDown();
                 break;
             case KeyboardEvent.KEY_LEFT:
-                move(getCol(), getRow()-1);
+                moveLeft();
                 break;
             case KeyboardEvent.KEY_RIGHT:
-                move(getCol(), getRow()+1);
+                moveRight();
                 break;
             case KeyboardEvent.KEY_SPACE:
-                Grid.getCell.setWalkedOn(true);
-                Grid.getCell.setColor(Color.MAGENTA);
-                fill();
+                //grid.getCell(getCol(),getRow());
+                currentPos.setColor(Color.BLUE);
+                currentPos.fill();
+                //referencia a la cell del grid que necesito marcar Grid.getCell.setWalkedOn(true);
+                // aqui tiene que haber la referencia a la celda en la que estoy parada en el grid setColor(Color.MAGENTA);
                 System.out.println("space");
                 break;
             case KeyboardEvent.KEY_L:

@@ -8,7 +8,7 @@ public class Cell {
     private int row;
     private boolean isWalkedOn; // to mark later as have been walked on or not.
     private Rectangle rectangle;
-    private Color color;
+
 
 
     public Cell(int col, int row){
@@ -57,12 +57,30 @@ public class Cell {
 
     // nos permite cambiar los colores luego (?) por que? no deberia de heredarse de la libreria.?
     public void setColor(Color color) {
-        this.color = color;
+        rectangle.setColor(color);
     }
 
-    public void move(int x, int y){
-        rectangle.translate(col*Grid.CELLSIZE,row*Grid.CELLSIZE);
+    public void moveUp(){
+        rectangle.translate(0, -Grid.CELLSIZE);
+        row--;
     }
+
+    public void moveDown(){
+        rectangle.translate(0, Grid.CELLSIZE);
+        row++;
+    }
+
+    public void moveLeft(){
+        rectangle.translate(-Grid.CELLSIZE,0);
+        col--;
+    }
+
+    public void moveRight(){
+        rectangle.translate(Grid.CELLSIZE,0);
+        col++;
+    }
+
+
 
     /*public Cell setPosCol() {
         return getCol();

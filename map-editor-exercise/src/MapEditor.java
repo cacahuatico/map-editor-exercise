@@ -6,7 +6,7 @@ public class MapEditor {
 
     public MapEditor (Grid grid){
         this.grid = grid;
-        canvas = grid.getCanvas();
+        canvas = grid.getGrid();
 
     }
 

@@ -7,11 +7,12 @@ public class Battleground {
     public static void main(String[] args) {
 
 
-        Grid firsttry = new Grid();
-        firsttry.drawCells();
-        MapEditor mapEditor = new MapEditor(firsttry);
+        Grid firstTry = new Grid();
+        firstTry.drawCells();
+        MapEditor mapEditor = new MapEditor(firstTry);
         mapEditor.start();
-        Rectangle rectangle = new Rectangle();
+
+
 
 
 
