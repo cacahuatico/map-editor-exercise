@@ -6,16 +6,16 @@ public class Cell {
 
     private int col;
     private int row;
-    private Color color;
     private boolean isWalkedOn; // to mark later as have been walked on or not.
     private Rectangle rectangle;
+    private Color color;
 
 
     public Cell(int col, int row){
         this.col = col;
         this.row = row;
-        this.rectangle = new Rectangle(col*Grid.CELLSIZE, row*Grid.CELLSIZE, Grid.CELLSIZE, Grid.CELLSIZE);
-        this.color = Color.WHITE;
+        this.rectangle = new Rectangle(Grid.CELLSIZE+Grid.PADDING, Grid.CELLSIZE+Grid.PADDING, Grid.CELLSIZE, Grid.CELLSIZE);
+        this.rectangle.setColor(Color.BLUE);
         this.isWalkedOn = false;
     }
 
@@ -55,12 +55,13 @@ public class Cell {
         this.rectangle=rectangle;
     }
 
+    // nos permite cambiar los colores luego (?) por que? no deberia de heredarse de la libreria.?
     public void setColor(Color color) {
         this.color = color;
     }
 
     public void move(int x, int y){
-        rectangle.translate(Grid.CELLSIZE,Grid.CELLSIZE);
+        rectangle.translate(col*Grid.CELLSIZE,row*Grid.CELLSIZE);
     }
 
     /*public Cell setPosCol() {

@@ -13,6 +13,8 @@ public class Cursor extends Cell implements KeyboardHandler {
     private int cells = Grid.COLS*Grid.ROWS;
     private Cell position;
     private int moveTo = Grid.CELLSIZE;
+    private int initialPosX = 5/moveTo;
+    private int initialPosY = 5/moveTo;
 
     public Cursor(int col, int row){
         super(col,  row);
@@ -40,10 +42,10 @@ public class Cursor extends Cell implements KeyboardHandler {
         switch (keyboardEvent.getKey()){
 
             case KeyboardEvent.KEY_UP:
-                move(getCol(), getRow()-moveTo);
+                move(0, 1);
                 break;
             case KeyboardEvent.KEY_DOWN:
-                move(getCol(), getRow()+moveTo);
+                move(0,+1);
                 break;
             case KeyboardEvent.KEY_LEFT:
                 move(getCol(), getRow()-1);
@@ -52,9 +54,10 @@ public class Cursor extends Cell implements KeyboardHandler {
                 move(getCol(), getRow()+1);
                 break;
             case KeyboardEvent.KEY_SPACE:
-                setWalkedOn(true);
-                setColor(Color.MAGENTA);
+                Grid.getCell.setWalkedOn(true);
+                Grid.getCell.setColor(Color.MAGENTA);
                 fill();
+                System.out.println("space");
                 break;
             case KeyboardEvent.KEY_L:
                 if(isWalkedOn()){

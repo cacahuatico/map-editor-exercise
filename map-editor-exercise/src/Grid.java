@@ -10,7 +10,7 @@ public class Grid {
     public static final int COLS = 25;
     public static final int ROWS = 25;
     public static final int CELLSIZE = 30;
-    public final int PADDING = 10;
+    public static final int PADDING = 10;
 
     public Grid(){
         this.canvas = new Cell[COLS][ROWS];
@@ -41,5 +41,9 @@ public class Grid {
     public void paint(int col, int row) {
         canvas[col][row].setColor(Color.BLACK);
         canvas[col][row].fill();
+    }
+
+    public void getCell(int col, int row) {
+        canvas[col][row] = new Cell(col, row);
     }
 }

@@ -12,7 +12,8 @@ public class MapEditor {
 
     public void start(){
 
-        Cursor cursor = new Cursor(5,5);
+        Cursor cursor = new Cursor(10,10);
+
 
 
 
