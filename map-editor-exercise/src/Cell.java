@@ -12,35 +12,20 @@ public class Cell {
 
 
     public Cell(int col, int row){
-
         this.col = col;
         this.row = row;
-        this.rectangle = new Rectangle();
+        this.rectangle = new Rectangle(col*Grid.CELLSIZE, row*Grid.CELLSIZE, Grid.CELLSIZE, Grid.CELLSIZE);
         this.color = Color.WHITE;
         this.isWalkedOn = false;
-
-
-
-
     }
 
+    public void draw(){
+        rectangle.draw();
+    }
 
-
-
-
-
-   /*
-    private void colorCell(Rectangle rectangle){
-        if(rectangle.isWalkedOn()) {
-            rectangle.setColor(Color.BLACK);
-            rectangle.fill();
-        }
-    }*/
-
-
-
-
-
+    public void fill(){
+        rectangle.fill();
+    }
 
     public int getCol() {
         return col;
@@ -73,4 +58,12 @@ public class Cell {
     public void setColor(Color color) {
         this.color = color;
     }
+
+    public void move(int x, int y){
+        rectangle.translate(Grid.CELLSIZE,Grid.CELLSIZE);
+    }
+
+    /*public Cell setPosCol() {
+        return getCol();
+    }*/
 }
